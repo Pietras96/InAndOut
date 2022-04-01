@@ -49,10 +49,10 @@ namespace InAndOut.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int Id)
+        public JsonResult Edit(int id)
         {
-            Item obj = _db.Items.Where(x => x.Id == Id).FirstOrDefault();
-            return View(obj);
+            Item obj = _db.Items.Where(x => x.Id == id).FirstOrDefault();
+            return Json(obj);
         }
     }
 }
