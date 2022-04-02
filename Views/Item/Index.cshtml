@@ -8,7 +8,7 @@
         </div>
         <div class="col-6 text-right">
             <a class="btn btn-primary" asp-controller="Item" asp-action="Create">Create new Item</a>
-            <a onclick="jaja()" class="btn btn-warning">Edit Item</a>
+            <a onclick="editRow()" class="btn btn-warning">Edit Item</a>
         </div>
     </div>
     <br />
@@ -56,7 +56,7 @@
 
 
                 }
-              
+
             </tbody>
         </table>
 
@@ -67,3 +67,22 @@
     }
 
 </div>
+
+<script>
+    var link = '@Url.Action("Edit", "Item")';
+</script>
+
+@* Nie działało nam bo Url.Action nie działa jak jest w pliku .js, wtedy trzeba statyczny link, albo zdefiniować Url.Action tutaj i wysłać jako parametr do .js*@
+@*<script>
+        function edtiRow() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("Edit", "Item")',
+                contentType: "application/json; charset=utf-8",
+                data: {id: idRow },
+                dataType: "json",
+                success: function (recData) { alert('Success'); },
+                error: function () { alert('A error'); }
+        });
+    };
+    </script>*@

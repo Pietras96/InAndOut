@@ -24,15 +24,6 @@ function ChangeTextColor(a_obj, a_color) {
         a_obj.cells(i).style.color = a_color;
 }
 
-function jaja () {
-    console.log("jaja");
-    $.ajax({
-        type: "GET",
-        url: 'Item/Edit/?id=2" })',
-        contentType: "application/json; charset=utf-8",
-        data: {"id": "idRow"},
-        dataType: "json",
-        success: function (recData) { alert('Success'); },
-        error: function () { alert('A error'); }
-    });
+function editRow() {
+    window.open(link + '/' + idRow);
 };
