@@ -25,5 +25,8 @@ function ChangeTextColor(a_obj, a_color) {
 }
 
 function editRow() {
-    window.open(link + '/' + idRow);
+    window.open(linkEdit + '/' + idRow);
+};
+function deleteRow() {
+    window.open(linkDelete + '/' + idRow);
 };

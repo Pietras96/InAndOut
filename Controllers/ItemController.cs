@@ -43,8 +43,16 @@ namespace InAndOut.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Item obj)
         {
-            _db.Items.Update(obj);
-            _db.SaveChanges();
+            try
+            {
+                _db.Items.Update(obj);
+                _db.SaveChanges();
+                TempData["Message"] = "";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = "Wystapil blad podczas proby aktualizacji obiektu!: " + e.Message;
+            }
             return RedirectToAction("Index");
         }
 
@@ -54,5 +62,21 @@ namespace InAndOut.Controllers
             Item obj = _db.Items.Where(x => x.Id == id).FirstOrDefault();
             return View("Edit", obj);
         }
+      
+        public IActionResult Delete(int id)
+        {
+            Item obj = _db.Items.Where(x => x.Id == id).FirstOrDefault();
+            try
+            {
+                _db.Items.Remove(obj);
+                _db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = "Wystapil blad podczas proby usuniecia obiektu!: " + e.Message;
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }

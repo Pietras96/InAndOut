@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<InAndOut.Models.Item>
+
 <script src="~/js/ItemEdit.js"></script>
 <link rel="stylesheet" href="~/css/ItemEdit.css">
 <div class="container p-3">
+    <h3><strong>@TempData["Message"]</strong></h3>
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Borrowed Items</h2>
         </div>
         <div class="col-6 text-right">
             <a class="btn btn-primary" asp-controller="Item" asp-action="Create">Create new Item</a>
+            <a onclick="deleteRow()" class="btn btn-danger" asp-controller="Item" asp-action="Delete">Delete</a>
             <a onclick="editRow()" class="btn btn-warning">Edit Item</a>
         </div>
     </div>
@@ -69,7 +72,8 @@
 </div>
 
 <script>
-    var link = '@Url.Action("Edit", "Item")';
+    var linkEdit = '@Url.Action("Edit", "Item")';
+    var linkDelete = '@Url.Action("Delete", "Item")';
 </script>
 
 @* Nie działało nam bo Url.Action nie działa jak jest w pliku .js, wtedy trzeba statyczny link, albo zdefiniować Url.Action tutaj i wysłać jako parametr do .js*@
